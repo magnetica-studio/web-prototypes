@@ -1,0 +1,14 @@
+{
+  "name": "prototypes",
+  "version": "0.0.1",
+  "description": "Web Prototypes",
+  "main": "index.js",
+  "author": "Yuichi Yogo <yuichkun@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^3.18.1"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
