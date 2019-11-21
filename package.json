@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Yuichi Yogo <yuichkun@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "lerna run build"
+  },
   "devDependencies": {
     "lerna": "^3.18.1"
   },
