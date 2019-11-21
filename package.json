@@ -10,5 +10,6 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "private": true
 }
