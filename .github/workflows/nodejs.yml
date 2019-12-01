@@ -21,3 +21,8 @@ jobs:
       run: |
         yarn install
         yarn build
+        - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v1
+      with:
+        name: websites
+        path: ./
