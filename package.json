@@ -6,10 +6,12 @@
   "author": "Yuichi Yogo <yuichkun@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "lerna run build"
+    "build": "lerna run build",
+    "clean": "rimraf './**/node_modules'"
   },
   "devDependencies": {
-    "lerna": "^3.18.1"
+    "lerna": "^3.18.1",
+    "rimraf": "^3.0.0"
   },
   "workspaces": [
     "packages/*"
