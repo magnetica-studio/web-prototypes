@@ -1,7 +1,22 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
+const loader = new GLTFLoader();
 
-const draw = (container: HTMLDivElement | null) => {
+const loadGLTF = (url: string): Promise<GLTF> =>
+  new Promise((resolve, reject) => {
+    loader.load(
+      url,
+      gltf => {
+        console.log(gltf);
+        resolve(gltf);
+      },
+      undefined,
+      reject
+    );
+  });
+
+const draw = async (container: HTMLDivElement | null) => {
   if (!container) throw new Error('Invalid element');
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
@@ -15,28 +30,25 @@ const draw = (container: HTMLDivElement | null) => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
+  const gltf = await loadGLTF('./gltf/skull/scene.gltf');
+  scene.add(gltf.scene);
+  const light = new THREE.HemisphereLight(0xb1e1ff, 0xb97a20, 150);
+  scene.add(light);
 
-  camera.position.z = 5;
+  camera.position.z = 3;
 
   const animate = function() {
     requestAnimationFrame(animate);
-
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-
     renderer.render(scene, camera);
   };
-
   animate();
 };
 
 export const ThreeContainer: React.FC = () => {
   const containerRef = useRef(null);
-  useEffect(() => draw(containerRef.current));
+  useEffect(() => {
+    draw(containerRef.current);
+  });
   return <div id="container" ref={containerRef} />;
 };
 
