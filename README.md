@@ -1,5 +1,7 @@
 # Web Prototypes
 
+[![CircleCI](https://circleci.com/gh/magnetica-studio/prototypes.svg?style=svg)](https://circleci.com/gh/magnetica-studio/prototypes)
+
 ## About
 
 Experiments, prototypes, ideas will be all stored here in a mono-repo-like-fashion.
