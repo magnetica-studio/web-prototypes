@@ -1,0 +1,12 @@
+{
+  "name": "easing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@tweenjs/tween.js": "^18.4.2"
+  },
+  "devDependencies": {
+    "@types/tweenjs": "^1.0.0"
+  }
+}
