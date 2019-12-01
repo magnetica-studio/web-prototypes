@@ -1,11 +1,10 @@
 import React from 'react';
-import ThreeCanvas from './ThreeCanvas';
+import ThreeContainer from './ThreeContainer';
 
 const App: React.FC = () => {
   return (
     <div>
-      Hello World
-      <ThreeCanvas />
+      <ThreeContainer />
     </div>
   );
 };
