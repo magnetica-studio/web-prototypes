@@ -36,4 +36,4 @@ jobs:
       - run: yarn build
       - run: yarn clean
       - store_artifacts:
-          path: /tmp/artifacts
+          path: ./
