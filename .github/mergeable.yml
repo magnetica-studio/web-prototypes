@@ -1,0 +1,17 @@
+version: 2
+mergeable:
+  - when: pull_request.*, pull_request_review.*
+    validate:
+      - do: assignee
+        max:
+          count: 1
+        min:
+          count: 1
+      - do: description
+        no_empty:
+          enabled: true
+          message: must include specs
+      - do: label
+        must_include:
+          regex: ^Type
+          message: must include types
