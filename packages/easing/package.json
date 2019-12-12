@@ -8,7 +8,8 @@
     "build": "parcel build index.html --public-url ./"
   },
   "dependencies": {
-    "@tweenjs/tween.js": "^18.4.2"
+    "@tweenjs/tween.js": "^18.4.2",
+    "web-animations-js": "^2.3.2"
   },
   "devDependencies": {
     "@types/tweenjs": "^1.0.0"
