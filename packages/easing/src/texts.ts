@@ -1,9 +1,9 @@
 const textsStr =
 `国境の長いトンネルを抜けると雪国であった。夜の底が白くなった。信号所に汽車が止まった。
-　向側の座席から娘が立って来て、島村の前のガラス窓を落した。雪の冷気が流れこんだ。娘は窓いっぱいに乗り出して、遠くへ呼ぶように、
+向側の座席から娘が立って来て、島村の前のガラス窓を落した。雪の冷気が流れこんだ。娘は窓いっぱいに乗り出して、遠くへ呼ぶように、
 「駅長さあん、駅長さあん」
-　明りをさげてゆっくり雪を踏んで来た男は、襟巻で鼻の上まで包み、耳に帽子の毛皮を垂れていた。
-　もうそんな寒さかと島村は外を眺めると、鉄道の官舎らしいバラックが山裾に寒々と散らばっているだけで、雪の色はそこまで行かぬうちに闇に呑まれてい　た。
+明りをさげてゆっくり雪を踏んで来た男は、襟巻で鼻の上まで包み、耳に帽子の毛皮を垂れていた。
+もうそんな寒さかと島村は外を眺めると、鉄道の官舎らしいバラックが山裾に寒々と散らばっているだけで、雪の色はそこまで行かぬうちに闇に呑まれていた。
 「駅長さん、私です、御機嫌よろしゅうございます」
 「ああ、葉子さんじゃないか。お帰りかい。また寒くなったよ」
 「弟が今度こちらに勤めさせていただいておりますのですってね。お世話さまですわ」
@@ -22,11 +22,39 @@ const keyFrames: Keyframe[] = [
   }
 ]
 
+class TextShadow {
+  container: HTMLElement
+  text: string
+  element: HTMLDivElement
+  animationOptions: KeyframeAnimationOptions
+  constructor(container: HTMLElement, text) {
+    this.container = container
+    this.text = text
+    this.element = document.createElement('div')
+    this.element.classList.add('text-shadow')
+    this.element.innerText = this.text
+    this.animationOptions = {
+      duration: 200 * this.text.length,
+      fill: 'forwards'
+    }
+  }
+
+  render() {
+    this.container.appendChild(this.element)
+  }
+
+  remove() {
+    this.container.removeChild(this.element)
+  }
+
+}
+
 
 class Text {
   container: HTMLElement
   text: string
   element: HTMLSpanElement
+  shadow: TextShadow
   animationOptions: KeyframeAnimationOptions
 
   constructor(container: HTMLElement, text) {
@@ -38,17 +66,24 @@ class Text {
       duration: 200 * this.text.length,
       fill: 'forwards'
     }
+    const appContainer = document.getElementById('container')
+    this.shadow = new TextShadow(appContainer, this.text)
   }
 
   async render(): Promise<void> {
+    this.shadow.render()
     this.container.appendChild(this.element)
     const animation = this.element.animate(keyFrames, this.animationOptions).finished.then(
       () => {
         console.log('animation for ', this.text, ' ended')
-        this.container.removeChild(this.element)
+        this.shadow.remove()
+        this.remove()
       }
     )
     return animation
+  }
+  remove() {
+    this.container.removeChild(this.element)
   }
 }
 

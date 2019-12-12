@@ -26,3 +26,15 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.text-shadow {
+  font-size: 200px;
+  position: absolute;
+  right:0;
+  top:0;
+  transform: scaleX(-1);
+  opacity: 0.1;
+  writing-mode: vertical-rl;
+  line-height: 320px;
+  filter: blur(8px)
+}
