@@ -1,0 +1,5 @@
+# Compatibility
+
+- [ ] Safari
+- [ ] Chrome
+- [ ] Firefox
