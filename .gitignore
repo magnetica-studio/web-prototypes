@@ -86,3 +86,6 @@ typings/
 
 # Local Netlify folder
 .netlify
+
+
+dist

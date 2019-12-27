@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  color: #3a2a5894;
+}
+#container {
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(white, #cacaca);
+}
+
+#stars {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#stars img {
+  position: absolute;
+  width: 2rem;
+}
+
+#textArea {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-shadow {
+  font-size: 200px;
+  position: absolute;
+  right:0;
+  top:0;
+  transform: scaleX(-1);
+  opacity: 0.1;
+  writing-mode: vertical-rl;
+  line-height: 320px;
+  filter: blur(8px)
+}
