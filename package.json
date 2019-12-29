@@ -6,7 +6,7 @@
   "author": "Yuichi Yogo <yuichkun@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "lerna run build",
+    "build": "lerna run build --parallel",
     "clean": "rimraf './**/node_modules'"
   },
   "devDependencies": {
