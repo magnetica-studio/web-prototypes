@@ -4,7 +4,8 @@
   "description": "A simple web component to showcase prototypes.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --mode=production",
+    "dev": "webpack --watch --mode=development"
   },
   "author": "Yuichi Yogo",
   "license": "MIT",

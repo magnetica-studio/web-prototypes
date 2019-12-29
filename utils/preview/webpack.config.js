@@ -4,7 +4,6 @@ module.exports = {
   output: {
     filename: 'preview.js'
   },
-  mode: 'production',
   module: {
     rules: [
       {

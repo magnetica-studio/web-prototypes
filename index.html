@@ -4,46 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
   <title>Magnetica Web Prototypes</title>
-  <style>
-    ul {
-      list-style: none;
-    }
-  </style>
-
+  <script type="module" src="./utils/preview/dist/preview.js"></script>
 </head>
 <body>
-  <h1>Prototypes</h1>
-  <ul>
-    <li>
-      <iframe src="./packages/gltf/build/index.html"></iframe>
-      <a href="./packages/gltf/build/index.html">Threejs GLTF</a>
-      <ul>
-        <li>Loading GLTF file into threejs scene</li>
-        <li>It might take 10 seconds or so</li>
-      </ul>
-    </li>
-    <li>
-      <iframe src="./packages/hello-world/build/index.html"></iframe>
-      <a href="./packages/hello-world/build/index.html">Hello World</a>
-    </li>
-    <li>
-      <iframe src="./packages/easing/dist/stars.html"></iframe>
-      <a href="./packages/easing/dist/index.html">Easing</a>
-    </li>
-    <li>
-      <iframe src="https://codepen.io/yuichkun/full/gObRQgG"></iframe>
-      <a href="https://codepen.io/yuichkun/full/gObRQgG">Hide&Seek</a>
-    </li>
-    <li>
-      <iframe src="https://codesandbox.io/s/react-shader-example-v14x6"></iframe>
-      <a href="https://codesandbox.io/s/react-shader-example-v14x6">React Shader in CodeSandbox</a>
-    </li>
-    <li>
-      <iframe src="./packages/react-shader/build/index.html"></iframe>
-      <a href="./packages/react-shader/build/index.html">React Shader</a>
-    </li>
-  </ul>
-  
+  <div id="proto-container">
+    <preview-box title="Hello World" src="./packages/hello-world/build/index.html"></preview-box>
+    <preview-box title="Threejs GLTF" src="./packages/gltf/build/index.html"></preview-box>
+    <preview-box title="Easing" src="./packages/easing/dist/stars.html"></preview-box>
+    <preview-box title="Hide&Seek" src="https://codepen.io/yuichkun/full/gObRQgG"></preview-box>
+    <preview-box title="react Shader in CodeSandbox" src="https://codesandbox.io/s/react-shader-example-v14x6"></preview-box>
+    <preview-box title="React Shader" src="./packages/react-shader/build/index.html"></preview-box>
+  </div>
 </body>
 </html>
