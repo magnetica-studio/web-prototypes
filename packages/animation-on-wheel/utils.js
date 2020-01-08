@@ -38,6 +38,7 @@ function loadVideo(url, onprogress) {
     request.onload = (e) => {
       resolve(request.response)
     }
+    request.setRequestHeader('Cache-Control', 'no-cache');
     request.onprogress = onprogress
     request.send()
   })
