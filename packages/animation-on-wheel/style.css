@@ -6,12 +6,10 @@ body {
   margin: 0;
   padding: 0;
   background:black;
+  overflow: hidden;
 }
 
-#wrapper {
-  width: 100vw;
-  height: 100vh;
-}
+#wrapper {}
 
 span {
   z-index: 100;
@@ -26,6 +24,6 @@ span {
 }
 
 video {
-  width: 100vw;
+  height: 100vh;
   filter: brightness(50%);
 }
