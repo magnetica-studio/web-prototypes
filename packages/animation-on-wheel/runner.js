@@ -12,13 +12,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   const res = await loadVideo(videoUrl, onprogress)
   vid.src= URL.createObjectURL(res)
   span.innerText = ''
+  // a hack needed to play on mobile
+  vid.play()
+  vid.pause()
 
-  const SPEED_MS = 70
-  const power = SPEED_MS / 1000
   let t = 0
 
-  function play(e) {
-    t += e.deltaY > 0 ? power : -power
+  function play(deltaY, power) {
+    t += deltaY > 0 ? power : -power
     console.log(t)
     vid.currentTime = t
     renderText()
@@ -41,7 +42,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.querySelector('span').innerText = texts[textIndex]
   }
 
-  document.querySelector('#wrapper').addEventListener('wheel', throttle(play, SPEED_MS))
+  function enablePc() {
+    const SPEED_MS = 70
+    const power = SPEED_MS / 1000
+    document.querySelector('#wrapper').addEventListener('wheel', throttle((e) => play(e.deltaY, power), SPEED_MS))
+  }
+
+  function enableMobile() {
+
+    document.querySelector('#wrapper').addEventListener('touchstart', touchStart, false)
+    document.querySelector('#wrapper').addEventListener('touchmove', touchMove, false)
+
+    let startY = 0
+    function touchStart(event) {
+      startY = event.touches[0].pageY;
+    }
+
+    const SPEED_MS = 70
+    function touchMove(event){
+      offsetY = startY - event.touches[0].pageY
+      const power = SPEED_MS / 1000
+      play(offsetY, power)
+      startY = event.touches[0].pageY
+    }
+  }
+
+  enablePc()
+  enableMobile()
 
 })
 
