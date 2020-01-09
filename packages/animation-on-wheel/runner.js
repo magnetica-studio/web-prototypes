@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const res = await loadVideo(videoUrl, onprogress)
   vid.src= URL.createObjectURL(res)
-  span.innerText = ''
+  span.innerText = 'Scroll Down ↓↓↓'
   // a hack needed to play on mobile
   vid.play()
   vid.pause()
