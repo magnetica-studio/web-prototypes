@@ -1,16 +1,48 @@
 const videoUrl = 'https://magnetica-prototypes.s3-ap-northeast-1.amazonaws.com/bg.mp4'
-document.addEventListener('DOMContentLoaded', async () => {
-  const vid = document.querySelector('video')
-  const span = document.querySelector('span')
 
+function loadLocalFile() {
+  return new Promise((resolve, reject) => {
+    const input = document.createElement('input')
+    input.setAttribute('type', 'file')
+    input.setAttribute('accept', 'video/*')
+    input.style.visibility = 'hidden'
+    input.onchange = (e) => {
+      const file = e.target.files[0]
+      const reader = new FileReader()
+      reader.addEventListener('load', (e) => {
+        resolve(e.target.result)
+      })
+      reader.readAsDataURL(file)
+    }
+    document.body.append(input)
+    document.body.querySelector('input').click()
+  })
+}
+
+async function loadDefault() {
   const onprogress = (e) => {
+    const span = document.querySelector('span')
     const loadState = ((e.loaded / e.total) * 100).toFixed(1)
     console.log('loading...', loadState)
     span.innerText = `Loading... ${loadState}`
   }
-
   const res = await loadVideo(videoUrl, onprogress)
-  vid.src= URL.createObjectURL(res)
+  return URL.createObjectURL(res)
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const vid = document.querySelector('video')
+  const span = document.querySelector('span')
+
+  const isPc = !isMobile()
+  if (isPc) {
+    if (confirm('Would you like to use a local file?')) {
+      vid.src = await loadLocalFile()
+    } else {
+      vid.src= await loadDefault() 
+    }
+  }
+
   span.innerText = 'Scroll Down ↓↓↓'
   // a hack needed to play on mobile
   vid.play()
