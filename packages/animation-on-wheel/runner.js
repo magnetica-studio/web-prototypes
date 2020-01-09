@@ -34,8 +34,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const vid = document.querySelector('video')
   const span = document.querySelector('span')
 
-  const isPc = !isMobile()
-  if (isPc) {
+  if (isMobile()) {
+    vid.src= await loadDefault() 
+    // a hack needed to play on mobile
+    vid.play()
+    vid.pause()
+  } else {
     if (confirm('Would you like to use a local file?')) {
       vid.src = await loadLocalFile()
     } else {
@@ -44,9 +48,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   span.innerText = 'Scroll Down ↓↓↓'
-  // a hack needed to play on mobile
-  vid.play()
-  vid.pause()
 
   let t = 0
 
