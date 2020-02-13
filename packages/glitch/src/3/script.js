@@ -17,12 +17,16 @@ app.stage.filters = [displacementFilter];
 app.renderer.view.style.transform = 'scale(1.02)';
 displacementSprite.scale.x = 4;
 displacementSprite.scale.y = 4;
-animate();
 
-function animate() {
-  displacementSprite.x += 10;
-  displacementSprite.y += 4;
-  requestAnimationFrame(animate);
+function animate(x, y) {
+  displacementSprite.x += Math.random() * 10 * x
+  displacementSprite.y += Math.random()* 10 * y
 }
 
-animate()
+window.addEventListener('wheel', (e) => {
+  animate(e.deltaX, e.deltaY)
+})
+
+window.addEventListener('touchmove', (e) => {
+  animate(e.touches[0].pageX, e.touches[0].pageY)
+})
