@@ -1,0 +1,58 @@
+body{
+  margin: 0;
+  padding: 0;
+  background: rgb(20,20,20);
+  background: radial-gradient(circle, rgba(20,20,20,1) 63%, rgba(3,3,3,1) 100%);
+  display: flex;
+}
+
+.container {
+  height: 100vh;
+  margin: 0 auto;
+}
+
+img {
+  height: 100%;
+  cursor: pointer;
+}
+
+.original {
+  filter: saturate(130%);
+  position: absolute;
+  /* none */
+  clip-path: polygon(0 1%, 0 100%, 100% 100%, 0% 100%);
+}
+
+.disappear {
+  animation: disappear 1s forwards;
+}
+
+.emerge {
+  animation: emerge 1s forwards;
+}
+
+@keyframes disappear {
+  0% {
+    /* full */
+    clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  100% {
+    /* none */
+    clip-path: polygon(0 1%, 0 100%, 100% 100%, 0% 100%);
+  }
+}
+
+@keyframes emerge {
+  0% {
+    /* none */
+    clip-path: polygon(0 1%, 0 100%, 100% 100%, 0% 100%);
+  }
+  100% {
+    /* full */
+    clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+.move {
+  transform: translate(-20px);
+}

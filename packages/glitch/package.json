@@ -1,0 +1,12 @@
+{
+  "name": "glitch",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Yuichi Yogo",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --public-url ./"
+  }
+}
