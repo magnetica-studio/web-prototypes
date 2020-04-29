@@ -1,0 +1,33 @@
+body {
+    background: rgb(247, 247, 247);
+}
+h1 {
+    font-family: sofia-pro,sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 3rem;
+    text-align: center;
+}
+ul {
+    list-style: none;
+    margin-right: 5vw;
+    margin-left: 5vw;
+}
+li {
+    font-size: 1.25rem;
+    font-family: sofia-pro,sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #a4a4a4;
+    text-wrap: normal;
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+}
+a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: black;
+    font-family: freight-text-pro, serif;
+    font-weight: 300;
+    font-style: normal;
+}
