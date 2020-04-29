@@ -1,5 +1,5 @@
-import water from '../../images/water.jpg'
-import filterImage from '../../images/displacement_map.png'
+import water from '../images/water.jpg'
+import filterImage from '../images/displacement_map.png'
 
 const app = new PIXI.Application({width: window.innerWidth, height: window.innerHeight});
 document.body.appendChild(app.view);
