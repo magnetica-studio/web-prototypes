@@ -1,0 +1,33 @@
+body{
+  margin: 0;
+  padding: 0;
+  background: rgb(20,20,20);
+  background: radial-gradient(circle, rgba(20,20,20,1) 63%, rgba(3,3,3,1) 100%);
+  display: flex;
+}
+
+.container {
+  height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+img {
+  height: 100%;
+  cursor: pointer;
+}
+
+.original {
+  position: absolute;
+}
+.alt {
+  transform: translateX(-20px);
+  filter: saturate(0.7);
+}
+.clip {
+  /* top */
+  /* clip-path: polygon(0 0, 50% 100%, 100% 0); */
+
+  /* side */
+  clip-path: polygon(0 0, 0 100%, 100% 52%);
+}
